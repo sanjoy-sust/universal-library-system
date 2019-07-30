@@ -1,0 +1,47 @@
+allprojects {
+    /*
+    ** version numbers specified in gradle.properties file
+    */
+    version = new ProjectVersion(
+            versionPrimary,
+            versionMajor,
+            versionMinor
+    )
+}
+
+def revisionInfo() {
+    def commitHash = ""
+    try {
+        def cmd = "git rev-parse HEAD"
+        def proc = cmd.execute()
+        commitHash = proc.text.trim()
+    } catch (Exception e) {
+        println "Could not extract revision Info. skipping revision info recording..."
+    }
+    return commitHash
+}
+
+ext.revision = revisionInfo()
+
+class ProjectVersion {
+    String primary
+    String major
+    String minor
+    String build
+
+    ProjectVersion(String primary, String major, String minor) {
+        this.primary = primary
+        this.major = major
+        this.minor = minor
+        this.build = System.getProperty("BUILD_NUMBER")
+    }
+
+    @Override
+    public String toString() {
+        String fullVersion = "$primary.$major.$minor"
+        if (this.build != null && this.build.trim().length() > 0) {
+            fullVersion = fullVersion.concat(".").concat(this.build)
+        }
+        return fullVersion
+    }
+}

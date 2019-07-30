@@ -1,0 +1,289 @@
+apply from: 'distribution.gradle'
+apply from: 'version.gradle'
+apply from: 'errormessage.gradle'
+
+buildscript {
+    repositories { mavenCentral() }
+}
+
+apply from: 'deploy.gradle'
+
+allprojects {
+    apply plugin: 'maven'
+    group = 'com.sanju'
+}
+
+
+
+ext.repoUrl = [
+]
+
+ext.version = [
+        
+gradleBuild           : '1.1.1',
+
+
+spring                : '4.0.7.RELEASE',
+springBoot            : '2.1.6.RELEASE',
+springIntegration     : '4.0.4.RELEASE',
+spring_security       : '4.0.1.RELEASE',
+spring_security_config: '4.0.1.RELEASE',
+spring_websocket      : '4.2.6.RELEASE',
+spring_messaging      : '4.1.6.RELEASE',
+spring_data           : '1.9.2.RELEASE',
+spring_data_commons   : '1.0.0.RELEASE',
+
+hibernate             : '4.3.5.Final',
+hibernateValidator    : '5.1.2.Final',
+
+flywayGradle          : '3.2.1',
+
+javaee                : '7.0',
+slf4j                 : '1.7.7',
+logback               : '1.1.2',
+junit                 : '4.11',
+cglib                 : '2.2.2',
+jodaTime              : '2.4',
+appcompat             : '19.+',
+playService           : '3.1.+',
+daggerCompiler        : '1.2.2',
+timber                : '2.4.+',
+bufferknife           : '6.0.0',
+dagger                : '1.2.2',
+httpClient            : '4.4',
+httpMime              : '4.4',
+testNG                : '6.8.21',
+dbUnit                : '2.5.1',
+springDbUnit          : '1.2.1',
+mockito               : '1.10.19',
+hsqlDb                : '2.3.2',
+wiremock              : '1.54',
+mail                  : '1.4',
+
+jackson               : '1.9.13',
+jackson_core          : '2.4.1',
+jackson_annotations   : '2.4.1',
+jackson_databind      : '2.4.1',
+qrGen                 : '1.3',
+jWebToken             : '1.0',
+corsFilter            : '1.3.2',
+
+j8583                 : '1.10.2',
+jPos                  : '2.0.2',
+gcm                   : '0.3.0',
+mqtt                  : '0.4.0',
+gson                  : '2.5',
+bouncycastle          : '1.50',
+bouncycastleForCSR    : '1.54',
+commonsIo             : '1.3.2',
+commonsValidator      : '1.4.0',
+commonsCsv            : '1.1',
+commonFileUpload      : '1.2',
+infinispanCore        : '7.1.0.Final',
+jbossLogging          : '3.2.1.Final',
+cors_filter           : '1.3.2',
+authdotnet            : '1.8.0',
+netty                 : '4.1.0.Final',
+wildfly               : '8.2.0.Final',
+jbossDmr              : '1.3.0.Final',
+jbossThreads          : '2.2.1.Final',
+commonsCollections    : '4.0',
+jsonOrg               : '20140107',
+commonsLang           : '3.0',
+lombok                : '1.16.6',
+ojdbc                 : '7',
+jedis                 : '2.8.1',
+redisSpring           : '1.6.4.RELEASE',
+commonPool2           : '2.4.2',
+nettySSL              : '1.1.33.Fork17',
+alpnApi               : '1.1.2.v20150522',
+pushy                 : '0.7.2',
+jms                   : '4.2.5.RELEASE',
+java_apns             : '1.0.0.Beta6',
+guava                 : '18.0',
+rxjava                : '1.0.0',
+poi                   : '3.14',
+poi_ooxml             : '3.14',
+xlsxStreamer          : '1.0.1'
+]
+
+version = ext.version
+
+ext.libraries = [
+        
+        webapp    : [
+                spring           : [
+        "org.springframework:spring-webmvc:$version.spring",
+        "org.springframework:spring-web:$version.spring",
+        "org.springframework:spring-beans:$version.spring",
+        "org.springframework:spring-expression:$version.spring",
+        "org.springframework:spring-aop:$version.spring",
+        "org.springframework:spring-context:$version.spring",
+        "org.springframework:spring-core:$version.spring",
+        "org.springframework:spring-tx:$version.spring",
+        "org.springframework:spring-orm:$version.spring",
+        "org.springframework:spring-jdbc:$version.spring",
+        "org.springframework:spring-context-support:$version.spring",
+        "org.springframework.security:spring-security-web:$version.spring_security",
+        "org.springframework.security:spring-security-config:$version.spring_security_config",
+        "org.springframework.security:spring-security-core:$version.spring_security_config",
+],
+
+spring_websocket : [
+        "org.springframework:spring-websocket:$version.spring_websocket",
+        "org.springframework:spring-messaging:$version.spring_messaging"
+],
+spring_messaging : ["org.springframework:spring-messaging:$version.spring_messaging"],
+springData       : [
+        "org.springframework.data:spring-data-jpa:$version.spring_data",
+],
+gson             : [
+        "com.google.code.gson:gson:$version.gson"
+],
+bouncycastle     : [
+        "org.bouncycastle:bcprov-jdk15on:$version.bouncycastle",
+        "org.bouncycastle:bcpkix-jdk15on:$version.bouncycastleForCSR"
+],
+
+flywayGradle     : [
+        "org.flywaydb:flyway-gradle-plugin:$version.flywayGradle"
+],
+
+hibernate        : [
+        "org.hibernate:hibernate-core:$version.hibernate",
+        "org.hibernate:hibernate-entitymanager:$version.hibernate",
+        "org.hibernate:hibernate-validator:$version.hibernateValidator"
+],
+
+logger           : [
+        "org.slf4j:slf4j-api:$version.slf4j",
+        "ch.qos.logback:logback-core:$version.logback",
+        "ch.qos.logback:logback-classic:$version.logback"
+],
+
+springJms        : ["org.springframework:spring-jms:$version.jms"],
+springBoot       : ["org.springframework.boot:spring-boot-starter-web:$version.springBoot",
+                    "org.springframework.boot:spring-boot-starter-data-jpa:$version.springBoot"
+],
+springIntegration: [
+        "org.springframework.integration:spring-integration-core:$version.springIntegration",
+        "org.springframework.integration:spring-integration-jms:$version.springIntegration",
+        "org.springframework.integration:spring-integration-ip:$version.springIntegration"
+],
+
+cglib            : ["cglib:cglib:$version.cglib"],
+corsFilter       : ["com.thetransactioncompany:cors-filter:$version.corsFilter"],
+jodaTime         : ["joda-time:joda-time:$version.jodaTime"],
+javaee           : ["javax:javaee-api:$version.javaee"],
+//                jrebel           : ["javax:javaee-api:$version.javaee"],
+mail             : ["javax.mail:mail:$version.mail"],
+httpClient       : ["org.apache.httpcomponents:httpclient:$version.httpClient"],
+httpMime         : ["org.apache.httpcomponents:httpmime:$version.httpMime"],
+cors_filter      : ["com.thetransactioncompany:cors-filter:$version.cors_filter"]
+        ],
+        common    : [
+                jackson           : [
+                        "org.codehaus.jackson:jackson-mapper-asl:$version.jackson",
+                        "org.codehaus.jackson:jackson-core-asl:$version.jackson",
+                        "com.fasterxml.jackson.core:jackson-core:$version.jackson_core",
+                        "com.fasterxml.jackson.core:jackson-annotations:$version.jackson_annotations",
+                        "com.fasterxml.jackson.core:jackson-databind:$version.jackson_databind"
+                ],
+                redis             : [
+                        "redis.clients:jedis:$version.jedis",
+                        "org.springframework.data:spring-data-redis:$version.redisSpring"
+                ],
+                commonPool2       : ["org.apache.commons:commons-pool2:$version.commonPool2"],
+                test              : ["org.testng:testng:$version.testNG"],
+                dbUnit            : ["org.dbunit:dbunit:$version.dbUnit"],
+                springDbUnit      : ["com.github.springtestdbunit:spring-test-dbunit:$version.springDbUnit"],
+                mockito           : ["org.mockito:mockito-all:$version.mockito"],
+                springTest        : ["org.springframework:spring-test:$version.spring"],
+                hsqlDb            : ["org.hsqldb:hsqldb:$version.hsqlDb"],
+                wiremock          : ["com.github.tomakehurst:wiremock:$version.wiremock"],
+                qrGen             : ["net.glxn:qrgen:$version.qrGen"],
+                jWebToken         : ["com.googlecode.jsontoken:jsontoken:$version.jWebToken"],
+                gcm               : ["io.sprucehill:google-cloud-messaging-api-wrapper:$version.gcm"],
+                mqtt              : ["org.eclipse.paho:mqtt-client:$version.mqtt"],
+                commonsIo         : ["org.apache.commons:commons-io:$version.commonsIo"],
+                commonsValidator  : ["commons-validator:commons-validator:$version.commonsValidator"],
+                commonsCsv        : ["org.apache.commons:commons-csv:$version.commonsCsv"],
+                commonslang3      : ["org.apache.commons:commons-lang3:3.0"],
+                commonFileUpload  : ["commons-fileupload:commons-fileupload:$version.commonFileUpload"],
+                authdotnet        : ["net.authorize:anet-java-sdk:$version.authdotnet"],
+                infinispanCore    : ["org.infinispan:infinispan-core:$version.infinispanCore"],
+                jbossLogging      : ["org.jboss.logging:jboss-logging:$version.jbossLogging"],
+                commonsCollections: ["org.apache.commons:commons-collections4:$version.commonsCollections"],
+                jsonOrg           : ["org.json:json:$version.jsonOrg"],
+                commonsLang       : ["org.apache.commons:commons-lang3:$version.commonsLang"],
+                lombok            : ["org.projectlombok:lombok:$version.lombok"],
+                ojdbc             : ["ojdbc:ojdbc:$version.ojdbc"],
+                alpnApi           : ["org.eclipse.jetty.alpn:alpn-api:$version.alpnApi"],
+                nettySSL          : ["io.netty:netty-tcnative-boringssl-static:$version.nettySSL"],
+                guava             : ["com.google.guava:guava:$version.guava"],
+                pushy             : ["com.relayrides:pushy:$version.pushy"],
+                rxjava            : ["io.reactivex:rxjava:$version.rxjava"],
+                poi               : ["org.apache.poi:poi:$version.poi"],
+                poi_ooxml         : ["org.apache.poi:poi-ooxml:$version.poi_ooxml"],
+                xlsxStreamer      : ["com.monitorjbl:xlsx-streamer:$version.xlsxStreamer"]
+        ],
+        management: [
+                wildflyControllerClient: ["org.wildfly:wildfly-controller-client:$version.wildfly"],
+                jbossDmr               : ["org.jboss:jboss-dmr:$version.jbossDmr"],
+                jbossThreads           : ["org.jboss.threads:jboss-threads:$version.jbossThreads"],
+                wildflyProtocol        : ["org.wildfly:wildfly-protocol:$version.wildfly"],
+        ],
+        j8583     : ["net.sf.j8583:j8583:$version.j8583"],
+        jPos      : ["org.jpos:jpos:$version.jPos"],
+        netty     : ["io.netty:netty-all:$version.netty"],
+        apn       : ["com.notnoop.apns:apns:$version.java_apns"]
+]
+
+ext.testlibversion = [
+        thucydides       : '0.9.268',
+        thucydidesjbehave: '0.9.275',
+        thucydidesgradle : '0.9.273',
+        easytesting      : '1.4',
+        slf4j            : '1.6.1',
+        junit            : '4.11',
+        skyscreamer      : '1.2.3',
+        restassured      : '2.1.0',
+        wiremock         : '1.42'
+]
+
+ext.testlibraries = [
+        app: [
+
+                thucydides      : [
+                        "net.thucydides:thucydides-core:$testlibversion.thucydides",
+                        "net.thucydides:thucydides-junit:$testlibversion.thucydides",
+                        "net.thucydides:thucydides-jbehave-plugin:$testlibversion.thucydidesjbehave"
+                ],
+
+                thucydidesgradle: [
+                        "net.thucydides.plugins.gradle:thucydides-gradle-plugin:$testlibversion.thucydidesgradle"
+                ],
+
+                slf4j           : ["org.slf4j:slf4j-simple:$testlibversion.slf4j"],
+                easytesting     : ["org.easytesting:fest-assert:$testlibversion.easytesting"],
+                junit           : ["junit:junit:$testlibversion.junit"],
+                skyscreamer     : ["org.skyscreamer:jsonassert:$testlibversion.skyscreamer"],
+                restassured     : ["com.jayway.restassured:rest-assured:$testlibversion.restassured"],
+                wiremock        : ["com.github.tomakehurst:wiremock:$testlibversion.wiremock"]
+        ]
+]
+
+subprojects {
+    buildscript {
+        repositories {
+            mavenLocal()
+            mavenCentral()
+        }
+    }
+    apply plugin: 'idea'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
