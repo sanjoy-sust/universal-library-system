@@ -2,12 +2,14 @@ package com.sanju.authmanager.core.entity;
 
 import com.sanju.authmanager.core.enums.UserType;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity(name = "user")
+@EqualsAndHashCode(callSuper=true)
 public class UserEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

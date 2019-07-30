@@ -1,15 +1,13 @@
 package com.sanju.authmanager.core.service;
 
 import com.sanju.authmanager.core.repository.PrivilegeRepository;
+import com.sanju.authmanager.core.util.DtoAndEntityBuilder;
 import com.sanju.authmanager.dto.PrivilegeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PrivilegeServiceImpl implements PrivilegeService {
@@ -17,24 +15,24 @@ public class PrivilegeServiceImpl implements PrivilegeService {
     @Autowired
     private PrivilegeRepository privilegeRepository;
 
-    @PostMapping
-    public void addPrivilege(@RequestBody PrivilegeDto privilegeDto){
+    @Autowired
+    private DtoAndEntityBuilder dtoAndEntityBuilder;
 
+    public void add(PrivilegeDto privilegeDto){
+        privilegeRepository.save(dtoAndEntityBuilder.privilegeDtoEntity(privilegeDto));
     }
 
-    @PutMapping
-    public void updatePrivilege(@RequestBody PrivilegeDto privilegeDto){
-
-    }
-
-    @GetMapping("{id}")
-    public void getPrivilege(long id){
-
+    public void update( PrivilegeDto privilegeDto){
+        privilegeRepository.save(dtoAndEntityBuilder.privilegeDtoEntity(privilegeDto));
     }
 
 
-    @GetMapping
+    public PrivilegeDto getPrivilege(long id){
+
+        return dtoAndEntityBuilder.privilegeEntityToDto(privilegeRepository.getOne(id));
+    }
+
     public List<PrivilegeDto> getPrivileges(){
-        return null;
+        return privilegeRepository.findAll().stream().map(x->dtoAndEntityBuilder.privilegeEntityToDto(x)).collect(Collectors.toList());
     }
 }

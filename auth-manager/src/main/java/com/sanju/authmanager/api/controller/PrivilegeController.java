@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("privilege")
 public class PrivilegeController {
 
     @Autowired
@@ -15,17 +16,17 @@ public class PrivilegeController {
 
     @PostMapping
     public void addPrivilege(@RequestBody PrivilegeDto privilegeDto){
-
+        privilegeService.add(privilegeDto);
     }
 
     @PutMapping
     public void updatePrivilege(@RequestBody PrivilegeDto privilegeDto){
-
+        privilegeService.update(privilegeDto);
     }
 
     @GetMapping("{id}")
     public PrivilegeDto getPrivilege(long id){
-        return null;
+        return privilegeService.getPrivilege(id);
     }
 
 
