@@ -1,8 +1,10 @@
 package com.sanju.authmanager.api.controller;
 
+import com.sanju.authmanager.api.validator.UserRequestValidator;
 import com.sanju.authmanager.core.service.UserService;
 import com.sanju.authmanager.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +12,18 @@ import java.util.List;
 @RestController
 @RequestMapping("user")
 public class UserController {
+
+    @InitBinder("userRequest")
+    protected void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(new UserRequestValidator());
+    }
+
     @Autowired
     private UserService userService;
 
     @PostMapping
     public void create(@RequestBody UserDto dto){
+
         userService.add(dto);
     }
 

@@ -21,6 +21,8 @@ public class DtoAndEntityBuilder {
         userEntity.setEmail(userDto.getEmail());
         userEntity.setMobile(userDto.getMobile());
         userEntity.setAddress(userDto.getAddress());
+        userEntity.setUsername(userDto.getUsername());
+        userEntity.setPassword(userDto.getPassword());
         userEntity.setUserType(userDto.getUserType());
         userEntity.setRoles(userDto.getRoles().stream()
                 .map(x -> roleDtoToEntity(x)).collect(Collectors.toList()));
@@ -38,6 +40,8 @@ public class DtoAndEntityBuilder {
         dto.setMobile(entity.getMobile());
         dto.setAddress(entity.getAddress());
         dto.setUserType(entity.getUserType());
+        dto.setUsername(entity.getUsername());
+        dto.setPassword(entity.getPassword());
         dto.setRoles(entity.getRoles().stream()
                 .map(x -> roleEntityToDto(x)).collect(Collectors.toList()));
 

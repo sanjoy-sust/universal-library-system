@@ -24,3 +24,4 @@ dist/
 nbdist/
 classes/
 .nb-gradle/
+auth-manager/out/
