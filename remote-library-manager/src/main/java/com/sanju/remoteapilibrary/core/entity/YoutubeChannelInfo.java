@@ -1,0 +1,18 @@
+package com.sanju.remoteapilibrary.core.entity;
+
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity(name = "youtube_channel")
+@Data
+public class YoutubeChannelInfo extends BaseEntity{
+
+    @Column(name = "channel_id")
+    private String channelId;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "subscription_count")
+    private String subscriptionCount;
+}
