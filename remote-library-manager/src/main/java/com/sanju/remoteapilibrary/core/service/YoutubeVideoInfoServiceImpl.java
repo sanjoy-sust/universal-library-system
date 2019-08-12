@@ -30,7 +30,7 @@ public class YoutubeVideoInfoServiceImpl implements YoutubeVideoInfoService {
 
     @Override
     public YouTubeVideoInfo get(long id) {
-        return youtubeVideoInfoRepository.getOne(id);
+        return youtubeVideoInfoRepository.findById(id).get();
     }
 
     @Override

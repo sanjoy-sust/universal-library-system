@@ -26,7 +26,7 @@ public class YoutubeChannelServiceImpl implements YoutubeChannelService {
 
     @Override
     public YoutubeChannelInfo get(long id) {
-        return youtubeChannelRepository.getOne(id);
+        return youtubeChannelRepository.findById(id).get();
     }
 
     @Override

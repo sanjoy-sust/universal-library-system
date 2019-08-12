@@ -25,7 +25,7 @@ public class YoutubeVideoStatServiceImpl implements YoutubeVideoStatService {
 
     @Override
     public YoutubeVideoStatistics get(long id) {
-        return youtubeVideoStatisticsRepository.getOne(id);
+        return youtubeVideoStatisticsRepository.findById(id).get();
     }
 
     @Override
