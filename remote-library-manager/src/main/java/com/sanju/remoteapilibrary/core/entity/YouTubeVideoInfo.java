@@ -1,13 +1,14 @@
 package com.sanju.remoteapilibrary.core.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "youtube_video_info")
 @Data
+@EqualsAndHashCode(callSuper=true)
 public class YouTubeVideoInfo extends BaseEntity{
 
     @Column(name = "video_id")
@@ -41,6 +42,14 @@ public class YouTubeVideoInfo extends BaseEntity{
     @Column(name = "country_restricted")
     private String countryRestricted;
 
-    @Column(name = "channel_id")
+    @Column(name = "keyword")
+    private String keyword;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_id",referencedColumnName = "channel_id")
     private YoutubeChannelInfo channelInfo;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "video_stat_id",referencedColumnName = "video_id")
+    private YoutubeVideoStatistics videoStatistics;
 }

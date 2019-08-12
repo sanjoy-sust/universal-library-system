@@ -1,13 +1,15 @@
 package com.sanju.remoteapilibrary.core.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity(name = "youtube_video_stat")
 @Data
-public class YoutubeVideoStatistics {
+@EqualsAndHashCode(callSuper=true)
+public class YoutubeVideoStatistics extends BaseEntity{
 
     @Column(name = "like_count")
     private long likeCount;
@@ -25,5 +27,5 @@ public class YoutubeVideoStatistics {
     private long commentCount;
 
     @Column(name = "video_id")
-    private long videoId;
+    private String videoId;
 }
