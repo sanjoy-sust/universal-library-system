@@ -7,6 +7,4 @@ include 'gallery-manager'
 include 'auth-manager'
 include 'eureka-server'
 include 'image-service'
-include 'remote-library-manager'
-findProject(':remote-library-manager')?.name = 'remote-library'
-
+include 'remote-library'
