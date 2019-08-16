@@ -1,8 +1,0 @@
-29-07-2019 01:28:03.475 [restartedMain] INFO  com.sanju.bm.BmApplication.logStarted - Started BmApplication in 69.276 seconds (JVM running for 70.884)
-29-07-2019 01:38:49.594 [http-nio-10230-exec-2] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:54.042 [http-nio-10230-exec-1] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:55.724 [http-nio-10230-exec-3] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:56.651 [http-nio-10230-exec-4] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:56.761 [http-nio-10230-exec-5] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:57.110 [http-nio-10230-exec-6] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:57.520 [http-nio-10230-exec-7] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors

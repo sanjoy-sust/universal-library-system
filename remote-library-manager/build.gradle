@@ -35,13 +35,19 @@ repositories {
 
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompile group: 'junit', name: 'junit', version: '4.12'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 	compile 'mysql:mysql-connector-java'
 
@@ -65,8 +71,10 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/com.google.collections/google-collections
 	compile group: 'com.google.collections', name: 'google-collections', version: '1.0'
-
-
+// https://mvnrepository.com/artifact/com.google.guava/guava-collections
+	compile group: 'com.google.guava', name: 'guava-collections', version: 'r03'
+	// https://mvnrepository.com/artifact/com.google.guava/guava
+	compile group: 'com.google.guava', name: 'guava', version: '19.0'
 }
 
 

@@ -1,4 +1,0 @@
-29-07-2019 01:38:57.953 [http-nio-10230-exec-8] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:58.440 [http-nio-10230-exec-9] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:58.679 [http-nio-10230-exec-10] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:38:59.105 [http-nio-10230-exec-2] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors

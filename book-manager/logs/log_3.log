@@ -1,9 +1,0 @@
-29-07-2019 00:35:47.499 [http-nio-10230-exec-1] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:47.640 [http-nio-10230-exec-10] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:47.781 [http-nio-10230-exec-2] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:47.958 [http-nio-10230-exec-3] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:48.081 [http-nio-10230-exec-4] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:48.208 [http-nio-10230-exec-5] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:48.336 [http-nio-10230-exec-6] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 00:35:48.472 [http-nio-10230-exec-7] INFO  c.s.bm.api.controller.AuthorEndPoint.getAllAuthor - Getting all active authors
-29-07-2019 01:26:55.455 [restartedMain] INFO  com.sanju.bm.BmApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
