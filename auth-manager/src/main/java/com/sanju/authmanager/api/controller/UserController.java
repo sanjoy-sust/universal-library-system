@@ -23,7 +23,6 @@ public class UserController {
 
     @PostMapping
     public void create(@RequestBody UserDto dto){
-
         userService.add(dto);
     }
 
