@@ -47,7 +47,7 @@ public class PublisherServiceImpl implements PublisherService {
                     ErrorCodes.CODE.PUBLISHER_NOT_FOUND, translator.toLocale(ErrorCodes.REASON_MAP.get(ErrorCodes.CODE.PUBLISHER_NOT_FOUND)));
         }
         return publisherEntities.stream()
-                .filter(x->(x.getStatus().equals(Status.ACTIVE)))
+                .filter(x->(x.getStatus() != null && x.getStatus().equals(Status.ACTIVE)))
                 .map(x-> paramAndEntityBuilder.publisherEntityToParam(x))
                 .collect(Collectors.toList());
     }
