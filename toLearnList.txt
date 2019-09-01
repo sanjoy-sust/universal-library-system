@@ -1,0 +1,13 @@
+1. Docker
+2. kubernetes
+3. Kafka
+4. RabbitMQ
+5. CQRS patterns (Axon)
+6. Eureka
+7. Eureka netflix Ribbon
+8. Client side clustering with ribbon
+9. Gradle task writing to deploy with one script
+10. ELK stack
+11. Distributed system handling concept(Zipkin, sleuth)
+12. Centralize logging system
+13.
