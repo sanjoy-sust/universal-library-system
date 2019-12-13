@@ -1,0 +1,97 @@
+version: '3'
+services:
+  eureka-server:
+    restart: always
+    container_name: eureka-server
+    build:
+      context: .
+      dockerfile: eureka-server/Dockerfile_eureka_server
+    expose:
+      - 10210
+    ports:
+      - 10210:10210
+    networks:
+      - servicenet
+
+  config-server:
+    restart: always
+    container_name: config-server
+    build:
+      context: .
+      dockerfile: config-server/Dockerfile_config_server
+    expose:
+      - 10270
+    ports:
+      - 10270:10270
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://config-server:10270"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - servicenet
+
+  api-gateway:
+    restart: always
+    container_name: api-gateway
+    build:
+      context: .
+      dockerfile: api-gateway/Dockerfile_api_gateway
+    expose:
+      - 10200
+    ports:
+      - 10200:10200
+    networks:
+      - servicenet
+    links:
+      - config-server
+    depends_on:
+      - config-server
+    command: ["./wait-for-it.sh", "config-server:10270","--","./wait-for-it.sh", "eureka-server:10210", "--", "java","-jar", "api-gateway-0.0.1-SNAPSHOT.jar"]
+
+  docker-mysql:
+    restart: always
+    container_name: docker-mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "6033:3306"
+    networks:
+      - servicenet
+    depends_on:
+      - config-server
+
+  auth-manager:
+    restart: always
+    container_name: auth-manager
+    build:
+      context: .
+      dockerfile: auth-manager/Dockerfile_auth_manager
+    networks:
+      - servicenet
+    depends_on:
+      - config-server
+      - api-gateway
+    command: ["./wait-for-it.sh", "config-server:10270","--","--","./wait-for-it.sh", "eureka-server:10210","--","./wait-for-it.sh", "api-gateway:10200", "--", "java","-jar", "auth-manager-0.0.1-SNAPSHOT.jar"]
+
+  book-manager:
+    restart: always
+    container_name: book-manager
+    build:
+      context: .
+      dockerfile: book-manager/Dockerfile_book_manager
+    networks:
+      - servicenet
+    depends_on:
+      - config-server
+      - eureka-server
+      - api-gateway
+    command: ["./wait-for-it.sh", "config-server:10270","--","./wait-for-it.sh", "eureka-server:10210","--","./wait-for-it.sh", "api-gateway:10200", "--", "java","-jar", "book-manager-1.0-SNAPSHOT.jar"]
+
+networks:
+  servicenet:
+    driver: bridge

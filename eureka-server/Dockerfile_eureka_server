@@ -1,0 +1,5 @@
+FROM java:8
+VOLUME /tmp
+ADD eureka-server/build/libs/eureka-server-1.0-SNAPSHOT.jar eureka-server-1.0-SNAPSHOT.jar
+CMD ["java","-jar","eureka-server-1.0-SNAPSHOT.jar"]
+EXPOSE 10210
