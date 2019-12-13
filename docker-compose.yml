@@ -92,6 +92,20 @@ services:
       - api-gateway
     command: ["./wait-for-it.sh", "config-server:10270","--","./wait-for-it.sh", "eureka-server:10210","--","./wait-for-it.sh", "api-gateway:10200", "--", "java","-jar", "book-manager-1.0-SNAPSHOT.jar"]
 
+  remote-library:
+    restart: always
+    container_name: remote-library
+    build:
+      context: .
+      dockerfile: remote-library/Dockerfile_remote_library
+    networks:
+      - servicenet
+    depends_on:
+      - config-server
+      - eureka-server
+      - api-gateway
+    command: ["./wait-for-it.sh", "config-server:10270","--","./wait-for-it.sh", "eureka-server:10210","--","./wait-for-it.sh", "api-gateway:10200", "--", "java","-jar", "remote-library-0.0.1-SNAPSHOT.jar"]
+
 networks:
   servicenet:
     driver: bridge
